@@ -1,0 +1,81 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-potion: var(--potion);
+  --font-pixel: "Pixelify Sans", monospace;
+  --font-body: "VT323", monospace;
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.2 0.03 50);
+  --foreground: oklch(0.93 0.04 80);
+  --card: oklch(0.27 0.04 50 / 0.88);
+  --card-foreground: oklch(0.93 0.04 80);
+  --primary: oklch(0.78 0.15 75);
+  --primary-foreground: oklch(0.22 0.04 50);
+  --secondary: oklch(0.38 0.06 145);
+  --secondary-foreground: oklch(0.95 0.03 120);
+  --muted: oklch(0.33 0.03 50);
+  --muted-foreground: oklch(0.72 0.04 70);
+  --accent: oklch(0.6 0.16 25);
+  --accent-foreground: oklch(0.96 0.02 80);
+  --destructive: oklch(0.6 0.2 25);
+  --border: oklch(0.5 0.06 60);
+  --potion: oklch(0.82 0.22 140);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+  }
+  img { image-rendering: pixelated; }
+}
+
+@utility pixel-box {
+  border: 4px solid var(--border);
+  box-shadow: 4px 4px 0 0 oklch(0.12 0.02 50);
+  background: var(--card);
+}
+@utility pixel-btn {
+  font-family: var(--font-pixel);
+  border: 3px solid var(--primary-foreground);
+  box-shadow: 3px 3px 0 0 oklch(0.12 0.02 50);
+  transition: transform 0.1s;
+  &:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 0 oklch(0.12 0.02 50); }
+  &:disabled { opacity: 0.45; }
+}
+
+@keyframes stir { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg) translateY(-4px); } }
+@keyframes bubble { 0% { transform: translateY(0) scale(1); opacity: 0.9; } 100% { transform: translateY(-90px) scale(0.4); opacity: 0; } }
+@keyframes spill { 0% { transform: rotate(0); } 40% { transform: rotate(-70deg); } 100% { transform: rotate(-90deg) translateY(6px); } }
+@keyframes pop { 0% { transform: scale(0); } 70% { transform: scale(1.3); } 100% { transform: scale(1); } }
+.anim-stir { animation: stir 1.2s ease-in-out infinite; transform-origin: bottom center; }
+.anim-bubble { animation: bubble 1.8s ease-out infinite; }
+.anim-spill { animation: spill 0.8s ease-in forwards; }
+.anim-pop { animation: pop 0.5s ease-out; }
