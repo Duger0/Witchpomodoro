@@ -1,29 +1,57 @@
-# Welcome to your Lovable project
+# Cadı Kulübesi — Cozy İksir Pomodoro
 
-This project was built with [Lovable](https://lovable.dev).
+Odaklanma süreni pomodoro ile takip et; pixel cadın bu sürede kazanı karıştırıp iksir pişirsin. Kazandığın iksirlerle yeni cadılar ve kazanlar açabilirsin.
 
-## Build with Lovable
+## Nasıl çalışıyor?
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+1. **15, 25 veya 50 dakika** seç ve **Pişirmeye Başla**'ya bas.
+2. Süre ilerlerken pixel cadı kazanı karıştırmaya başlar.
+3. **Süreyi tamamlarsan** 1 tam şişe iksir kazanırsın.
+4. **Erken molaya çıkarsan** şişe devrilir, yarısı dökülür ve 0.5 iksir alırsın.
+5. Süreyi hiç başlatmadan bırakırsan iksir kazanmazsın.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+Bu kurallar `src/lib/game.ts` içinde duruyor ve `src/test/game.test.ts` altında test ediliyor.
 
-## Development
+## İksir Dükkanı
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Biriktirdiğin iksirlerle yeni cadılar ve kazanlar açabilirsin. Satın aldıkların kalıcı; istediğin zaman bunlardan birini seçip kullanabilirsin.
+
+| Cadı           | İksir |
+| -------------- | ----- |
+| Adaçayı Cadısı | 0 (başlangıç) |
+| Gül Cadısı     | 3     |
+| Ayaz Cadısı    | 6     |
+| Köz Cadısı     | 10    |
+| Gölge Cadısı   | 15    |
+
+| Kazan       | İksir |
+| ----------- | ----- |
+| Demir Kazan | 0 (başlangıç) |
+| Pembe Kazan | 2     |
+| Gök Kazan   | 5     |
+| Altın Kazan | 12    |
+
+## Yerel olarak çalıştırma
+
+Node.js gerekiyor (ya da bun).
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
 
-## Built with
+Testler için:
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+```sh
+npx vitest run
+```
+
+## Teknoloji
+
+- TanStack Start (React 19) + TypeScript
+- Tailwind CSS v4
+- Vitest
+
+## Not
+
+İksir sayın ve satın aldıkların şu an kullandığın tarayıcıda (localStorage) saklanıyor; başka bir cihazda görünmez.
